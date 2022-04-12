@@ -347,6 +347,7 @@ class PlayerFragment : Fragment() {
             }
         }
 
+
         view?.findViewById<TextView>(R.id.player_views_info)?.text = "${response?.views?.formatShort()} views • ${response?.uploadDate}"
         view?.findViewById<TextView>(R.id.textLike)?.text = response?.likes?.formatShort()
         view?.findViewById<TextView>(R.id.player_channelName)?.text = response?.uploader

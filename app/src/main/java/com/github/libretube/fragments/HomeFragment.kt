@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         apiClient = PipedApiClient.initialize(requireContext(), HomeFragment::class.toString())
         val recyclerView = view.findViewById<RecyclerView>(R.id.fragment_home_list)
+
         val progressbar = view.findViewById<ProgressBar>(R.id.progressBar)
 
         recyclerView.layoutManager = GridLayoutManager(view.context, resources.getInteger(R.integer.grid_items))
