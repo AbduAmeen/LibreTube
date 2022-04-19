@@ -280,8 +280,21 @@ class PlayerFragment : Fragment() {
     }
 
     private fun initializePlayerElements(response: Streams?) {
+        var playerDescription = view?.findViewById<TextView>(R.id.player_description)
+        val playerDescriptionArrow = view?.findViewById<ImageView>(R.id.player_description_arrow)
+
         view?.findViewById<TextView>(R.id.quality_text)?.text = "Auto"
         view?.findViewById<TextView>(R.id.player_title)?.text = response?.title
+        view?.findViewById<ConstraintLayout>(R.id.player_title_layout)?.setOnClickListener {
+            if (playerDescription?.visibility == View.GONE) {
+                playerDescription.visibility = View.VISIBLE
+                playerDescriptionArrow?.rotation = 180F
+            } else {
+                playerDescription?.visibility = View.GONE
+                playerDescriptionArrow?.rotation = 0F
+            }
+        }
+
         view?.findViewById<ImageButton>(R.id.quality_select)?.setOnClickListener {
             // Dialog for quality selection
             val builder: AlertDialog.Builder? = activity?.let {
@@ -313,7 +326,7 @@ class PlayerFragment : Fragment() {
                         val audioItem: MediaItem = MediaItem.Builder()
                             .setUri(response?.audioStreams?.get(getMostBitRate(response.audioStreams))?.url!!)
                             .build()
-                        var audioSource: MediaSource =
+                        val audioSource: MediaSource =
                             DefaultMediaSourceFactory(dataSourceFactory)
                                 .createMediaSource(audioItem)
                         val mergeSource: MediaSource =
@@ -327,7 +340,7 @@ class PlayerFragment : Fragment() {
             val dialog: AlertDialog = builder.create()
             dialog.show()
         }
-        view?.findViewById<TextView>(R.id.player_description)?.text =
+        playerDescription?.text =
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 Html.fromHtml(response?.description, Html.FROM_HTML_MODE_COMPACT)
             } else {
@@ -519,7 +532,7 @@ class PlayerFragment : Fragment() {
         var index = 0
         for ((i, audio) in audios.withIndex()) {
             val q = audio.quality!!.replace(" kbps", "").toInt()
-            if (q> bitrate) {
+            if (q > bitrate) {
                 bitrate = q
                 index = i
             }
