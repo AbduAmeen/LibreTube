@@ -9,7 +9,6 @@ import com.github.libretube.feed.FeedViewModel
 import com.github.libretube.feed.Video
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel

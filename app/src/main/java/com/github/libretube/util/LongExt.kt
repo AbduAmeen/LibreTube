@@ -4,7 +4,7 @@ import android.icu.number.Notation
 import android.icu.number.NumberFormatter
 import android.os.Build
 import java.text.DecimalFormat
-import java.util.*
+import java.util.Locale
 import kotlin.math.ln
 import kotlin.math.pow
 
