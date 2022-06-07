@@ -7,7 +7,7 @@ import com.github.libretube.data.network.obj.Streams
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import org.junit.Assert.assertNotEquals
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -27,10 +27,10 @@ class PlayerViewModelTest : ViewModelTest() {
     }
     @Test
     fun pause() {
-        val initialValue = viewModel.paused.value
+        val expectedValue = !viewModel.paused.value!!
 
         viewModel.pause()
 
-        assertNotEquals(initialValue, viewModel.paused.value)
+        assertEquals(expectedValue, viewModel.paused.value)
     }
 }

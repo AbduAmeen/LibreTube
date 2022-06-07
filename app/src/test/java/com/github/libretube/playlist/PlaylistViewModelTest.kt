@@ -6,7 +6,7 @@ import com.github.libretube.data.network.PipedApiClient
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import org.junit.Assert.assertNotEquals
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -27,15 +27,15 @@ class PlaylistViewModelTest : ViewModelTest() {
 
     @Test
     fun shuffle() {
-        val initialValue = viewModel.shuffleEvent.value
+        val expectedValue = !viewModel.shuffleEvent.value!!
         viewModel.shuffle()
-        assertNotEquals(initialValue, viewModel.shuffleEvent.value)
+        assertEquals(expectedValue, viewModel.shuffleEvent.value)
     }
 
     @Test
     fun playAll() {
-        val initialValue = viewModel.playAllEvent.value
+        val expectedValue = !viewModel.playAllEvent.value!!
         viewModel.playAll()
-        assertNotEquals(initialValue, viewModel.playAllEvent.value)
+        assertEquals(expectedValue, viewModel.playAllEvent.value)
     }
 }
