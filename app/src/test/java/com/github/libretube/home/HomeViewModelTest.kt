@@ -1,26 +1,16 @@
 package com.github.libretube.home
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
-import com.github.libretube.MainCoroutineRule
+import com.github.libretube.ViewModelTest
 import com.github.libretube.data.network.PipedApiClient
 import com.github.libretube.data.network.obj.StreamItem
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
-import io.mockk.junit4.MockKRule
 import org.junit.Assert.assertFalse
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 
-class HomeViewModelTest {
-    @get:Rule
-    val taskExecuteRule = InstantTaskExecutorRule()
-    @get:Rule
-    val mockkRule = MockKRule(this)
-    @get:Rule
-    val coroutineRule = MainCoroutineRule()
-
+class HomeViewModelTest : ViewModelTest() {
     @MockK
     private lateinit var apiClient: PipedApiClient
 

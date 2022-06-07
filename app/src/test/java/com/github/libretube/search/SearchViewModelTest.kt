@@ -1,28 +1,17 @@
 package com.github.libretube.search
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.github.libretube.MainCoroutineRule
+import com.github.libretube.ViewModelTest
 import com.github.libretube.data.network.PipedApiClient
 import com.github.libretube.data.network.obj.SearchResult
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
-import io.mockk.junit4.MockKRule
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 
-class SearchViewModelTest {
-
-    @get:Rule
-    val taskExecuteRule = InstantTaskExecutorRule()
-    @get:Rule
-    val mockkRule = MockKRule(this)
-    @get:Rule
-    val coroutineRule = MainCoroutineRule()
-
+class SearchViewModelTest : ViewModelTest() {
     @MockK
     private lateinit var apiClient: PipedApiClient
 
