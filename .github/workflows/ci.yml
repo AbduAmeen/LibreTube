@@ -35,7 +35,7 @@ jobs:
           cache: "gradle"
 
       - name: Build debug APK and run jvm tests
-        run: ./gradlew assembleDebug
+        run: ./gradlew test
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
